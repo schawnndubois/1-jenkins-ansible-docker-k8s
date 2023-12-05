@@ -1,7 +1,9 @@
 FROM  centos:latest
 MAINTAINER aristidejou@gmail.com
+# Set proxy environment variables
+ENV http_proxy=http://your.proxy.server:port
+ENV https_proxy=http://your.proxy.server:port
 RUN yum install -y httpd zip unzip
-RUN sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/CentOS-AppStream.repo
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip photogenic.zip
